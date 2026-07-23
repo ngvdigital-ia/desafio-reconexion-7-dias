@@ -6,3 +6,4 @@ screenshots/
 output/
 .offer-state.json
 
+.vercel
