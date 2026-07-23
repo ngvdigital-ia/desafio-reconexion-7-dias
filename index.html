@@ -3,96 +3,119 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Desafío Reconexión en 7 Días">
+    <meta name="description" content="Los Secretos de la Reconexión">
     <meta name="robots" content="noindex, nofollow">
-    <title>Desafío Reconexión en 7 Días</title>
+    <title>Los Secretos de la Reconexión</title>
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <!-- Clone brief: estructura social/video extraída de la referencia; sin scripts ni integraciones del competidor. -->
-    <main class="page-shell">
-      <header class="search-header" aria-label="Cabecera visual">
-        <img
-          src="assets/brand.png"
-          width="699"
-          height="60"
-          alt=""
-          fetchpriority="high"
-        >
-      </header>
-
-      <section class="watch-layout" aria-label="Área principal del video">
-        <aside class="live-chat" aria-label="Vista previa del chat">
-          <div class="chat-header">
-            <strong>Chat en vivo</strong>
-            <span>Publicaciones principales</span>
-          </div>
-          <div class="chat-body">
-            <div class="chat-line">
-              <span class="avatar skeleton"></span>
-              <span class="message skeleton"></span>
-            </div>
-            <div class="chat-line">
-              <span class="avatar skeleton"></span>
-              <span class="message short skeleton"></span>
-            </div>
-            <div class="chat-line">
-              <span class="avatar skeleton"></span>
-              <span class="message skeleton"></span>
-            </div>
-          </div>
-          <div class="chat-footer">
-            <span>El chat estará disponible con el video.</span>
-            <span>0/200</span>
-          </div>
-        </aside>
-
-        <div class="video-column">
-          <!-- waiting-video: sustituir únicamente con el embed oficial de la nueva VSL. -->
-          <div class="video-placeholder" role="img" aria-label="Espacio reservado para la nueva VSL">
-            <div class="play-mark" aria-hidden="true"></div>
-            <p>Video en preparación</p>
-          </div>
-        </div>
-      </section>
-
-      <section class="channel-actions" aria-label="Detalles del contenido">
-        <img
-          class="action-strip"
-          src="assets/channel.png"
-          width="824"
-          height="86"
-          alt=""
-          loading="eager"
-        >
-
-        <div class="channel-row">
+    <!--
+      Clone fiel de https://www.ilsegretodellariconquista.online/secretos.
+      waiting-video: trocar somente .player-mock pelo player oficial.
+      O botão comercial permanecerá sob controle do próprio player.
+    -->
+    <main class="main-section">
+      <div class="page-container">
+        <header class="search-header" aria-label="Cabecera visual">
           <img
-            class="expert-avatar"
-            src="assets/expert.jpeg"
-            width="369"
-            height="318"
-            alt="Dra. Claudia Mendoza"
+            src="assets/brand.png"
+            width="699"
+            height="60"
+            alt=""
+            fetchpriority="high"
           >
-          <div class="channel-copy">
-            <strong>Dra. Claudia Mendoza</strong>
-            <span>165K suscriptores</span>
-          </div>
-        </div>
-      </section>
+        </header>
 
-      <section class="status-panel" aria-label="Estado de preparación">
-        <p>La presentación completa estará disponible aquí.</p>
-        <small>Video y medición pendientes de integración oficial.</small>
-      </section>
+        <div class="content-grid">
+          <section class="video-column" aria-label="Presentación principal">
+            <div class="player-mock" role="img" aria-label="Vista previa del video pendiente de integración">
+              <p class="player-headline player-headline-desktop">
+                <span>
+                  Cómo Lograr Que Tu Esposo <em>Te Escuche</em> En Solo 7<br>
+                  Días Usando Los 3 Pilares De La Reconexión
+                </span>
+              </p>
+              <p class="player-headline player-headline-mobile">
+                <span>
+                  Descubre los <u>3 Pilares</u> de la Reconexión y<br>
+                  Vuelve a Tener Una <em>Relación en Paz</em> en Solo 7<br>
+                  días
+                </span>
+              </p>
+              <img
+                class="player-preview"
+                src="assets/player-preview.webp"
+                width="400"
+                height="533"
+                alt=""
+                fetchpriority="high"
+              >
+            </div>
+
+            <div class="channel-block">
+              <div class="channel-info">
+                <img
+                  class="expert-avatar"
+                  src="assets/expert.jpeg"
+                  width="369"
+                  height="318"
+                  alt="Dra. Claudia Mendoza"
+                >
+                <div class="channel-copy">
+                  <strong>Dra. Claudia Mendoza</strong>
+                  <span>165K suscriptores</span>
+                </div>
+                <span class="subscribe-pill">Suscribirse</span>
+              </div>
+
+              <img
+                class="action-strip"
+                src="assets/channel.png"
+                width="824"
+                height="86"
+                alt=""
+              >
+            </div>
+
+            <div class="notices" aria-label="Avisos de disponibilidad">
+              <p class="expiry">
+                <strong>ESTE VIDEO SALE DEL AIRE HOY <span id="today">23/07/2026</span></strong>
+              </p>
+              <p class="viewers">
+                <strong>355 MUJERES DE <span>Salvador</span> ESTÁN VIENDO ESTE VIDEO AHORA</strong>
+              </p>
+            </div>
+          </section>
+
+          <aside class="desktop-spacer" aria-hidden="true"></aside>
+        </div>
+      </div>
     </main>
 
     <footer class="site-footer">
-      <p>
-        Este sitio no está afiliado ni respaldado por Facebook™ o Meta Platforms Inc.
-        Facebook™ es una marca registrada de Meta Platforms Inc.
-      </p>
-      <p class="legal">Términos de Uso <span aria-hidden="true">•</span> Política de Privacidad</p>
+      <div class="footer-inner">
+        <p class="disclaimer">
+          Este sitio no está afiliado ni respaldado por Facebook™ o Meta Platforms Inc.<br>
+          Facebook™ es una marca registrada de Meta Platforms Inc. Este sitio funciona de manera independiente y no guarda relación con ninguna entidad oficial de Meta.
+        </p>
+        <p class="legal-links">
+          <a href="#terminos">Términos de Uso</a>
+          <span aria-hidden="true">|</span>
+          <a href="#privacidad">Política de Privacidad</a>
+        </p>
+      </div>
     </footer>
+
+    <script>
+      (() => {
+        const today = new Intl.DateTimeFormat("es-ES", {
+          day: "2-digit",
+          month: "2-digit",
+          year: "numeric",
+          timeZone: "America/Bahia"
+        }).format(new Date());
+        document.getElementById("today").textContent = today;
+      })();
+    </script>
   </body>
 </html>
