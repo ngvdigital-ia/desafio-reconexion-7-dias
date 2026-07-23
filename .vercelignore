@@ -1,0 +1,7 @@
+_capture/
+.source-reference.tmp.html
+reference-summary.json
+screenshots/
+output/
+.offer-state.json
+
